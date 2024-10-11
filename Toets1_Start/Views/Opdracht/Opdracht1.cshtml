@@ -1,0 +1,34 @@
+﻿@model List<(int,decimal)>
+<div class="row">
+    <div class="col-md-5">
+        <img src="~/images/Schermafbeelding 2024-10-09 090240.png" class="img-fluid" style="width:50%" />
+
+        <form method="post">
+            <label class="from-control" for="maxnumber">Maximum waarde</label>
+            <input title="Maximum number" placeholder="Voer de maximum waarde in (5-20)"
+                   required type="number" min="5" max="20" name="maxnumber" class="form-control" value="@ViewBag.MaxNumber" />
+            <input type="submit" value="GA" class="btn btn-primary m-2" />
+        </form>
+    </div>
+    <div class="col-md-7">
+        @if (ViewBag.Error != null)
+        {
+            <p class="text-danger">@ViewBag.Error</p>
+        }
+
+
+
+        @if (Model != null)
+        {
+            <table class="table">
+                @foreach (var tupel in Model)
+                {
+                    <tr>
+                        <td>@tupel.Item1</td>
+                        <td>@tupel.Item2</td>
+                    </tr>
+                }
+            </table>
+        }
+    </div>
+</div>
